@@ -7,7 +7,7 @@ import Paper from "@material-ui/core/Paper";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import { postQuestion } from "../api/qnApi";
-import categories from "../consts/categories";
+import categoriesArray from "../consts/categories";
 
 // import { url } from "inspector"; //WHAT IS THIS? APPEARED OUT OF NOWHERE
 
@@ -37,11 +37,12 @@ const useStyles = makeStyles({
 //addQuestion is a function in actions/questionActions which runs the POST API command and returns if postQuestionSuccess was a success or caused an error. This line of code is saying, run the POST API command to add the new questions and once thats done then push it into history stack in "/questions"
 function AddQuestion(props) {
   const classes = useStyles();
+
   let history = useHistory(); //defined to push a new entry onto the history stack
-  const [question, setQuestion] = useState({ questionName: "", categoryId:""})
+  const [question, setQuestion] = useState({ questionName: "", categoryId:""}) 
 
   function handleInputChanges(event) {
-    const { name, value } = event.target;
+    const { name, value } = event.target; //I DONT UNDERSTAND WHY IM USING "VALUE" HERE
 
     setQuestion((previousQuestion) => ({
       ...previousQuestion,
@@ -83,9 +84,9 @@ function AddQuestion(props) {
           label="Category"
           value={question.categoryId}
           onChange={handleInputChanges}
-          helperText="Please select your currency"
+          helperText="Please select your category"
         >
-          {props.categories.map((category) => (
+          {props.categoriesArray.map((category) => (
             <MenuItem key={category.name} value={category.id}>
               {category.name}
             </MenuItem>

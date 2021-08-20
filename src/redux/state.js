@@ -1,5 +1,5 @@
 export default {
   questionsArray: [],
-  categories:[],
+  categoriesArray:[],
 
 };

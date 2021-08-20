@@ -18,11 +18,11 @@ const useStyles = makeStyles({
 });
 
 const AllQuestions = (props) => {
-  // props will contain {questions, loadQuestions}
-  const classes = useStyles();
+ const classes = useStyles();
 
+ // props will contain {questions, loadQuestions}
   //ComponentDidMount() { }
-  useEffect(() => {
+  useEffect(() => { //I DONT UNDERSTANT THIS USEEFFECT FUNCTION
     if (props.questions.length === 0) {
       props.loadQuestions(); //this function is like a black box to the dumb component
     }
@@ -44,7 +44,7 @@ const AllQuestions = (props) => {
         </TableHead>
 
         <TableBody>
-          {props.questions.map((question) => (
+          {props.questions.map((question) => ( //DOES THIS NEED TO BE PROPS.QUESTIONSARRAY.MAP...?
             <TableRow key={question.id}>
               <TableCell>{question.question_name}</TableCell>
               <TableCell>
