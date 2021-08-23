@@ -1,2 +1,5 @@
 
 heroku > Deploy > connect GitHub under deploy method > set up Automatic Deploys
+
+Support for password authentication was removed on August 13, 2021. Please use a personal access token instead.
+> keychain > search for github > delete it > go to terminal and try git push again > will end up getting a token from github and reauthorize

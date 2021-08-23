@@ -5,8 +5,8 @@ import categoriesArray from "../consts/categories";
 
 function mapStateToProps(state){
   return {
-    categoriesArray,
-    questionsArray: state.questionsArray, //SHOULD THIS BE HERE?
+    categoriesArray, //getting data from outside of the state under consts/categories
+    //whatever i put in mapStateToProps is what i want to display in my component
   };
 }
 const dispatchStateToProps = {

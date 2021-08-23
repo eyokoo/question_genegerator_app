@@ -15,30 +15,21 @@ const RandomQuestion = (props) => {
   // props will contain {questions, loadQuestions}
   const classes = useStyles();
 
-  //ComponentDidMount() { }
-  //DO I NEED THIS USEEFFECT? WHAT IS THIS FOR??
-  useEffect(() => {
-    if (props.questions.length === 0) {
-      props.loadQuestions(); //this function is like a black box to the dumb component
-    }
-  }, []); //[] means on load of the page
-
-  const [question, setQuestion] = useState({ questionName: "", categoryId:""}) 
 
   function handleClick(event) { //when handleClick is run it will generate a random question
-    event.preventDefault(); //prevent from page to reload
 
    console.log("you clicked the button to call handleClick")
+    // props.loadRandomQuestion();
 
-  //PROBABLY NEED TO USE props.loadQuestions() BUT IT ONLY NEEDS TO LOAD ONE QUESTION
-  //HOW WILL IT KNOW TO RUN THE SQL QUERY ON THE BACKEND. probably with the to={"route"}
+  //PROBABLY NEED TO USE props.loadRandomQuestions() BUT IT ONLY NEEDS TO LOAD ONE QUESTION
+ 
 
   }
 
   return (
   
       {/**
-       * {props.questionsArray.map((question) => (
+       * {props.randomQuestion.map((question) => (
         <Typography variant="h5" className={classes.questionId}>   
           {question.questionName}
         </Typography>

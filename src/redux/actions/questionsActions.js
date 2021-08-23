@@ -13,7 +13,23 @@ export const loadQuestions = () => {
 export const loadQuestionsSuccess = (questions) => {
   return {
     type: ActionTypes.LOAD_QUESTIONS_SUCCESS,
-    questions,
+    questions, //THIS IS BEING REFERENCED IN THE REDUCER
+  };
+}
+
+export const loadRandomQuestion =()=>{
+  return function (dispatch) {
+    return qnApi
+    .getRandomQuestion()
+      .then((qnFromApi) => dispatch(loadRandomQuestionSuccess(qnFromApi)))
+      .catch((error) => console.log(error));
+  };
+}
+
+export const loadRandomQuestionSuccess = (question) => {
+  return {
+    type: ActionTypes.LOAD_RANDOM_QUESTION_SUCCESS,
+    question,
   };
 }
 

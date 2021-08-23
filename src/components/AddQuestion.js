@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { Link, useHistory } from "react-router-dom"; //DO WE NEED THE LINK COMPONENT
+import { Link, useHistory } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 // import Grid from '@material-ui/core/Grid';
+import MenuItem from '@material-ui/core/MenuItem';
 import Paper from "@material-ui/core/Paper";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
-import { postQuestion } from "../api/qnApi";
-import categoriesArray from "../consts/categories";
+
 
 // import { url } from "inspector"; //WHAT IS THIS? APPEARED OUT OF NOWHERE
 
@@ -61,7 +61,7 @@ function AddQuestion(props) {
 
   return (
     <Paper className={classes.paper} elevation={3}>
-      <Typography className={classes.questionName} variant="h5">
+      <Typography variant="h5">
         Add a new question
       </Typography>
       <form onSubmit={handleFormSubmit}>
@@ -86,7 +86,7 @@ function AddQuestion(props) {
           onChange={handleInputChanges}
           helperText="Please select your category"
         >
-          {props.categoriesArray.map((category) => (
+          {props.categoriesArray.map((category) => ( //whatever name i provide in my smart component/conatainer is what i should use here
             <MenuItem key={category.name} value={category.id}>
               {category.name}
             </MenuItem>
@@ -97,7 +97,7 @@ function AddQuestion(props) {
             SAVE
           </Button>
 
-          <Button variant="outlined" component={Link} to={"/questions"}>
+          <Button variant="outlined" component={Link} to={"/all-questions"}> {/**redirecting. You can see this on App.js under the Switch Component*/}
             CANCEL
           </Button>
         </div>

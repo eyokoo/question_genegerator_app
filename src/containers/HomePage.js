@@ -5,12 +5,13 @@ import { loadQuestions } from "../redux/actions/questionsActions";
 
 function mapStateToProps(state) {
   return {
-    questionsArray: state.questionsArray, 
+    randomQuestion: state.randomQuestion, 
   };
 }
 
 const dispatchStateToProps = {
-  loadQuestions, 
+  loadQuestions,
+  // loadRandomQuestion
 };
 
-export default connect(mapStateToProps, dispatchStateToProps)(AllQuestions);
+export default connect(mapStateToProps, dispatchStateToProps)(HomePage);

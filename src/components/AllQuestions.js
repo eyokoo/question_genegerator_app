@@ -44,7 +44,7 @@ const AllQuestions = (props) => {
         </TableHead>
 
         <TableBody>
-          {props.questions.map((question) => ( //DOES THIS NEED TO BE PROPS.QUESTIONSARRAY.MAP...?
+          {props.questionsArray.map((question) => ( //DOES THIS NEED TO BE PROPS.QUESTIONSARRAY.MAP...?
             <TableRow key={question.id}>
               <TableCell>{question.question_name}</TableCell>
               <TableCell>
