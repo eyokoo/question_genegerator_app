@@ -17,13 +17,13 @@ const useStyles = makeStyles({
   },
 });
 
-const AllQuestions = (props) => {
+function AllQuestions (props) {
  const classes = useStyles();
 
  // props will contain {questions, loadQuestions}
   //ComponentDidMount() { }
   useEffect(() => { //I DONT UNDERSTANT THIS USEEFFECT FUNCTION
-    if (props.questions.length === 0) {
+    if (props.questionsArray.length === 0) {
       props.loadQuestions(); //this function is like a black box to the dumb component
     }
   }, []); //[] means on load of the page

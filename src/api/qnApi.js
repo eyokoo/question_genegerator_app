@@ -1,6 +1,8 @@
-import { handleResponse, handleError } from "./apiUtils";
+import { handleResponse, handleError, getHeaders } from "./apiUtils";
 
-const url = "https://question-generator-app.herokuapp.com/questions"; //base url
+
+// const url = "https://question-generator-app.herokuapp.com/questions"; //base url
+const url = "http://localhost:9000/questions"; //base url
 
 export function getQuestions() {
   return fetch(url).then(handleResponse).catch(handleError);
@@ -13,13 +15,12 @@ export function getRandomQuestion() {
 export function postQuestion(question) { //fetching url and making a POST command  
   return fetch(url, {
     method: "POST", // POST for create
-    headers: { "content-type": "application/json" },
+    headers: getHeaders(),
     body: JSON.stringify(question),
   })
     .then(handleResponse)
     .catch(handleError);
 }
-
 
 
 export function deleteQuestion(id) {

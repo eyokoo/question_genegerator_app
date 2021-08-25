@@ -1,7 +1,7 @@
 export default  [
   {
     id: 1,
-    category: "Philosophical"
+    category: "No Category"
   },
   {
     id: 2,
@@ -9,6 +9,6 @@ export default  [
   },
   {
     id: 3,
-    category: "No Category"
+    category: "Philosophical"
   }
 ]

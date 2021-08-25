@@ -1,5 +1,7 @@
 import { combineReducers } from "redux";
 
-import questions from "./questionReducer";
+import questionsArray from "./questionReducer";
 
-export default combineReducers({ questions });
+import randomQuestion from "./randomQReducer"
+
+export default combineReducers({ questionsArray, randomQuestion});

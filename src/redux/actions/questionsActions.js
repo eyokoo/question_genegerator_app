@@ -4,7 +4,7 @@ import * as qnApi from "../../api/qnApi";
 export const loadQuestions = () => {
   return function (dispatch) {
     return qnApi
-    .getQuestions()
+      .getQuestions()
       .then((qnFromApi) => dispatch(loadQuestionsSuccess(qnFromApi)))
       .catch((error) => console.log(error));
   };
@@ -17,10 +17,10 @@ export const loadQuestionsSuccess = (questions) => {
   };
 }
 
-export const loadRandomQuestion =()=>{
+export const loadRandomQuestion = () => {
   return function (dispatch) {
     return qnApi
-    .getRandomQuestion()
+      .getRandomQuestion()
       .then((qnFromApi) => dispatch(loadRandomQuestionSuccess(qnFromApi)))
       .catch((error) => console.log(error));
   };
@@ -54,10 +54,10 @@ export const deleteQuestion = (questionId) => {
     //connect to the outside - API
     //start of the API call
     return qnApi
-    .deleteQuestion(questionId) 
-    //end of the API call
-    .then(() => dispatch(deleteQuestionSuccess(questionId))) //dispatch an action which is the deleteRecipeSuccess function
-    .catch((error) => console.log(error));//when the API cal was not successful
+      .deleteQuestion(questionId)
+      //end of the API call
+      .then(() => dispatch(deleteQuestionSuccess(questionId))) //dispatch an action which is the deleteRecipeSuccess function
+      .catch((error) => console.log(error));//when the API cal was not successful
   }
 }
 

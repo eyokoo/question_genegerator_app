@@ -1,45 +1,56 @@
-import { useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-// import FormControl from '@material-ui/core/FormControl';
+// import { useState } from "react";
 import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
+// import Typography from '@material-ui/core/Typography';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   paper: {
     margin: "auto",
     width: 650,
   },
-});
+  root: {
+    ...theme.typography.button,
+    backgroundColor: theme.palette.background.paper,
+    padding: theme.spacing(1),
+  },
+}));
 
-const RandomQuestion = (props) => {
+function RandomQuestion(props) {
   // props will contain {questions, loadQuestions}
   const classes = useStyles();
+  const [question, setQuestion] = useState({ questionName: "", questionId:""})
 
 
-  function handleClick(event) { //when handleClick is run it will generate a random question
 
-   console.log("you clicked the button to call handleClick")
-    // props.loadRandomQuestion();
+  function handleClick() { //when handleClick is run it will generate a random question
 
-  //PROBABLY NEED TO USE props.loadRandomQuestions() BUT IT ONLY NEEDS TO LOAD ONE QUESTION
- 
+    console.log("you clicked the button to call handleClick")
+
+    props.loadRandomQuestion(question)
+   .then(()=> setQuestion.questionName);
+
+    //PROBABLY NEED TO USE props.loadRandomQuestions() BUT IT ONLY NEEDS TO LOAD ONE QUESTION
 
   }
 
   return (
-  
-      {/**
-       * {props.randomQuestion.map((question) => (
-        <Typography variant="h5" className={classes.questionId}>   
-          {question.questionName}
-        </Typography>
-       ))}
-       */}
+
+    <p className={classes.root}>{"This div's text looks like that of a button."}</p>
+
+    {/* {props.randomQuestion.map((question) => {
+      <div>
+      
+      {question.questionName}
+      
+      </div>
+    })}
+    </div>
+     */}
 
 
-    <Button variant="contained" color="secondary" onChange={handleClick} component={Link} to={"/questions/random/:id"}>
-        GENERATE QUESTION
-      </Button>
+  < Button variant="contained" color="secondary" onClick={handleClick} component={Link} to={"/questions/random/:id"} >
+    GENERATE QUESTION
+      </Button >
   );
 }
 

@@ -16,21 +16,25 @@ const useStyles = makeStyles({
   paper: {
     margin: "auto",
     padding: 50,
-    width: 650,
+    width: 500,
   },
   title: {
     marginBottom: 8,
   },
   textField: {
-    display: "block",
-    marginBottom: 20,
+    // display: "block",
+    marginBottom: 20
+    // width: "100%",
   },
   button: {
     marginRight: 20,
   },
-  container: {
-    flexDirection: "row",
-    flexWrap: "wrap",
+  // container: {
+  //   flexDirection: "row",
+  //   flexWrap: "wrap",
+  // },
+  form: {
+    width: '100%',
   },
 });
 
@@ -60,13 +64,17 @@ function AddQuestion(props) {
   }
 
   return (
-    <Paper className={classes.paper} elevation={3}>
+    <Paper className={classes.paper} >
       <Typography variant="h5">
         Add a new question
       </Typography>
+    
+
+
+
+
       <form onSubmit={handleFormSubmit}>
-       
-        <TextField>
+        <TextField
           required
           className={classes.textField}
           fullWidth
@@ -75,8 +83,8 @@ function AddQuestion(props) {
           variant="outlined"
           value={question.questionName}
           onChange={handleInputChanges}
-          </TextField>
-
+          />
+          <div>
           <TextField
           select
           required
@@ -85,13 +93,15 @@ function AddQuestion(props) {
           value={question.categoryId}
           onChange={handleInputChanges}
           helperText="Please select your category"
-        >
+          >
+        
           {props.categoriesArray.map((category) => ( //whatever name i provide in my smart component/conatainer is what i should use here
-            <MenuItem key={category.name} value={category.id}>
-              {category.name}
+            <MenuItem key={category.id} value={category.id}>
+              {category.category}
             </MenuItem>
           ))}
         </TextField>
+        </div>
         <div>
           <Button className={classes.button} variant="outlined" color="primary" type="submit">
             SAVE
@@ -101,8 +111,11 @@ function AddQuestion(props) {
             CANCEL
           </Button>
         </div>
-
       </form>
+
+
+
+      
     </Paper>
   );
 }
