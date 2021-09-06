@@ -1,17 +1,18 @@
 import { connect } from "react-redux";
 import HomePage from "../components/HomePage";
-import { loadQuestions } from "../redux/actions/questionsActions";
+import { loadQuestions, loadRandomQuestion } from "../redux/actions/questionsActions";
+import categoriesArray from "../consts/categories"; 
 
-
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
   return {
     randomQuestion: state.randomQuestion, 
+    categoriesArray,
   };
 }
 
 const dispatchStateToProps = {
   loadQuestions,
-  // loadRandomQuestion
+  loadRandomQuestion
 };
 
 export default connect(mapStateToProps, dispatchStateToProps)(HomePage);

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-// import FormControl from '@material-ui/core/FormControl';
-import IconButton from "@material-ui/core/IconButton";
+import DeleteIcon from '@material-ui/icons/Delete';
+import IconButton from '@material-ui/core/IconButton';
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -10,6 +10,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 
+
 const useStyles = makeStyles({
   paper: {
     margin: "auto",
@@ -17,12 +18,11 @@ const useStyles = makeStyles({
   },
 });
 
-function AllQuestions (props) {
- const classes = useStyles();
+function AllQuestions(props) {
+  const classes = useStyles();
 
- // props will contain {questions, loadQuestions}
   //ComponentDidMount() { }
-  useEffect(() => { //I DONT UNDERSTANT THIS USEEFFECT FUNCTION
+  useEffect(() => {
     if (props.questionsArray.length === 0) {
       props.loadQuestions(); //this function is like a black box to the dumb component
     }
@@ -30,6 +30,7 @@ function AllQuestions (props) {
 
 
 
+  //NEED TO MAKE THE DELETE ICON WORK
   const handleDeleteQuestion = (questionId) => {
     props.deleteQuestion(questionId)
   }
@@ -39,22 +40,21 @@ function AllQuestions (props) {
       <Table>
         <TableHead>
           <TableRow>
-            <TableCell>Title</TableCell>
+            <TableCell>QUESTIONS:</TableCell>
           </TableRow>
         </TableHead>
 
         <TableBody>
-          {props.questionsArray.map((question) => ( //DOES THIS NEED TO BE PROPS.QUESTIONSARRAY.MAP...?
+          {props.questionsArray.map((question) => (
             <TableRow key={question.id}>
-              <TableCell>{question.question_name}</TableCell>
+              <TableCell>{question.question}</TableCell>
               <TableCell>
-                <IconButton
-                className ={classes.deleteButton}
-                color="primary"
-                aria-label="delete question"
-                component="span"
-                onClick={() => handleDeleteQuestion(question.id)} //by adding another set of paramenters it will not automatically run the onclick event unless it is called
-                /> 
+                <IconButton aria-label="delete" disabled color="primary">
+                  <DeleteIcon color="primary"
+                    onClick={() => handleDeleteQuestion(question.id)} //by adding another set of paramenters it will not automatically run the onclick event unless it is called
+                  />
+                </IconButton>
+
               </TableCell>
             </TableRow>
           ))}

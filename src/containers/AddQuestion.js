@@ -1,9 +1,9 @@
 import { connect } from "react-redux";
 import AddQuestion from "../components/AddQuestion";
-import { postQuestion } from "../redux/actions/questionsActions";
+import { postQuestion} from "../redux/actions/questionsActions";
 import categoriesArray from "../consts/categories"; 
 
-function mapStateToProps(state){
+const mapStateToProps = (state) => {
   return {
     categoriesArray, //getting data from outside of the state under consts/categories
     //whatever i put in mapStateToProps is what i want to display in my component
@@ -11,7 +11,6 @@ function mapStateToProps(state){
 }
 const dispatchStateToProps = {
   //[key]: value
-  //  addQuestion: addQuestion,
   postQuestion,
 };
 

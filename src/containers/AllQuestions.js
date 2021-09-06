@@ -3,9 +3,9 @@ import AllQuestions from "../components/AllQuestions";
 import { loadQuestions, deleteQuestion } from "../redux/actions/questionsActions";
 
 
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
   return {
-    questionsArray: state.questionsArray, 
+    questionsArray: state.questionsArray,
   };
 }
 

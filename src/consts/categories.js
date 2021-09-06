@@ -1,7 +1,7 @@
 export default  [
   {
     id: 1,
-    category: "No Category"
+    category: "General"
   },
   {
     id: 2,

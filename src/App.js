@@ -4,10 +4,12 @@ import Button from "@material-ui/core/Button";
 import Toolbar from "@material-ui/core/Toolbar";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Provider as ReduxProvider } from "react-redux";
-
 import store from "./redux/store";
 import AllQuestions from "./containers/AllQuestions";
 import AddQuestion from "./containers/AddQuestion";
+import SignUp from "./components/SignUp"
+import HomePage from "./containers/HomePage";
+import SignIn from "./containers/SignIn";
 // import { url } from "inspector";
 
 
@@ -17,7 +19,7 @@ const useStyles = makeStyles((_) => ({
   }
 }));
 
-function App() {
+const App = () => {
   const classes = useStyles();
 
   return (
@@ -27,6 +29,12 @@ function App() {
 
           <AppBar position="static">
             <Toolbar>
+            <Button color="inherit" component={Link} to={"/signup"}>
+                Sign Up
+              </Button>
+              <Button color="inherit" component={Link} to={"/signin"}>
+                Sign In
+              </Button>
             <Button color="inherit" component={Link} to={"/home"}>
                 Home
               </Button>
@@ -40,9 +48,15 @@ function App() {
           </AppBar>
 
           <Switch>
-            {/* <Route path="/home">
+          <Route path="/signup">
+              <SignUp />
+            </Route>
+            <Route path="/signin">
+              <SignIn/>
+            </Route>
+            <Route path="/home">
               <HomePage />             
-            </Route> */}
+            </Route>
             <Route path="/all-questions">
               <AllQuestions />
             </Route>
