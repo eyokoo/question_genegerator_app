@@ -21,6 +21,7 @@ const useStyles = makeStyles({
 function AllQuestions(props) {
   const classes = useStyles();
 
+
   //ComponentDidMount() { }
   useEffect(() => {
     if (props.questionsArray.length === 0) {
