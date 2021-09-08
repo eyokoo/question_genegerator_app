@@ -49,6 +49,22 @@ export const postQuestionSuccess = (question) => {
   };
 }
 
+export const updateQuestion = (question) => {
+  return function (dispatch) {
+    return qnApi
+      .updateQuestion(question)
+      .then((updQuestion) => dispatch(updateQuestionSuccess(updQuestion)))
+      .catch((error) => console.log(error));
+  };
+}
+
+export const updateQuestionSuccess = (question) => {
+  return {
+    type: ActionTypes.UPDATE_QUESTION,
+    question: question,
+  };
+}
+
 export const deleteQuestion = (questionId) => {
   return function (dispatch) {
     //connect to the outside - API

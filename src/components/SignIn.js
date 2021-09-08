@@ -12,7 +12,7 @@ import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import Background from './img/signInCoffee.jpeg'
+import Background from './img/signIn.jpeg'
 // import { PinDropSharp } from '@material-ui/icons';
 import { useHistory } from 'react-router-dom';
 
@@ -21,7 +21,7 @@ const Copyright = () => {
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
       <Link color="inherit" href="https://material-ui.com/">
-        Over Coffee
+        For the Road
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}

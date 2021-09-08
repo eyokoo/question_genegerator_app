@@ -13,15 +13,15 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { useState } from "react";
-import Background from './img/signUpCoffee.jpeg'
-import { PinDropSharp } from '@material-ui/icons';
+import Background from './img/signUp.jpeg'
+// import { PinDropSharp } from '@material-ui/icons';
 
 const Copyright = () => {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
       <Link color="inherit" href="https://material-ui.com/">
-        Over Coffee
+        For the Road
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -147,7 +147,7 @@ const SignUp = () => {
               color="primary"
               className={classes.submit}
               onClick={handleFormSubmit}
-              component={Link} to={"/signin"}
+              // to={"/signin"} //redirect id not working need to fix
             >
               Sign Up
             </Button>

@@ -10,13 +10,17 @@ import AddQuestion from "./containers/AddQuestion";
 import SignUp from "./components/SignUp"
 import HomePage from "./containers/HomePage";
 import SignIn from "./containers/SignIn";
-// import { url } from "inspector";
+import Typography from '@material-ui/core/Typography';
+
 
 
 const useStyles = makeStyles((_) => ({
   root: {
     flexGrow: 1,
-  }
+  },
+  toolbarTitle: {
+    flexGrow: 1,
+  },
 }));
 
 const App = () => {
@@ -29,20 +33,23 @@ const App = () => {
 
           <AppBar position="static">
             <Toolbar>
-            <Button color="inherit" component={Link} to={"/signup"}>
-                Sign Up
-              </Button>
-              <Button color="inherit" component={Link} to={"/signin"}>
-                Sign In
-              </Button>
+            <Typography variant="h6" color="inherit" noWrap className={classes.toolbarTitle}>
+            For the Road
+          </Typography>
             <Button color="inherit" component={Link} to={"/home"}>
-                Home
+                Let's Play
               </Button>
               <Button color="inherit" component={Link} to={"/all-questions"}>
                 All Questions
               </Button>
               <Button color="inherit" component={Link} to={"/add-question"}> 
                 Add a Question
+              </Button>
+            <Button color="inherit" component={Link} to={"/signup"}>
+                Sign Up
+              </Button>
+              <Button color="inherit" variant="outlined" component={Link} to={"/signin"}>
+                Sign In
               </Button>
             </Toolbar>
           </AppBar>

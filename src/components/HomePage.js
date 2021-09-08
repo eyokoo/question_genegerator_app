@@ -64,7 +64,7 @@ const RandomQuestion = (props) => {
       </TextField>
       <div></div>
       <Button variant="contained" color="secondary" onClick={handleClick} >
-        BREW QUESTION
+        NEXT QUESTION
     </Button>
 
     </Paper>
