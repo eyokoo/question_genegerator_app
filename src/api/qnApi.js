@@ -8,9 +8,18 @@ export function getQuestions() {
   return fetch(url).then(handleResponse).catch(handleError);
 }
 
+export function getQuestionById(questionId) {
+  return fetch(`${url}/${questionId}`).then(handleResponse).catch(handleError);
+}
+
 export function getRandomQuestion() {
   return fetch(url + "/random").then(handleResponse).catch(handleError);
 }
+
+export function getRandomQuestionByC() {
+  return fetch(url + "/random").then(handleResponse).catch(handleError);
+}
+
 
 export function postQuestion(question) { //fetching url and making a POST command  
   return fetch(url, {

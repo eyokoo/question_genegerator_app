@@ -7,10 +7,12 @@ import { Provider as ReduxProvider } from "react-redux";
 import store from "./redux/store";
 import AllQuestions from "./containers/AllQuestions";
 import AddQuestion from "./containers/AddQuestion";
-import SignUp from "./components/SignUp"
+import EditQuestion from "./containers/EditQuestion";
+import SignUp from "./containers/SignUp"
 import HomePage from "./containers/HomePage";
 import SignIn from "./containers/SignIn";
 import Typography from '@material-ui/core/Typography';
+
 
 
 
@@ -69,6 +71,9 @@ const App = () => {
             </Route>
             <Route path="/add-question">
               <AddQuestion />
+            </Route>
+            <Route path="/edit-question/:questionId">
+              <EditQuestion />
             </Route>
           </Switch>
 

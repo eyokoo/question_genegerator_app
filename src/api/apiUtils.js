@@ -9,7 +9,7 @@ export async function handleResponse(response) {
 
 export function handleError(error) {
   console.error(`API call failed: ${error}`);
-  throw error;
+  throw error; // {Error: "User does not exist"}
 }
 
 export function storeTokenOnLocalStorage(response) {
@@ -18,7 +18,7 @@ export function storeTokenOnLocalStorage(response) {
 
   delete response.accessToken;
 
-  return response; //--> {username}
+  return response; //--> {name}
 }
 
 export function getHeaders() {

@@ -13,6 +13,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { useState } from "react";
+import { useHistory } from 'react-router-dom';
 import Background from './img/signUp.jpeg'
 // import { PinDropSharp } from '@material-ui/icons';
 
@@ -35,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
   },
   image: {
     // backgroundImage: 'url(https://source.unsplash.com/random)',
-    backgroundImage:`url(${Background})`,
+    backgroundImage: `url(${Background})`,
     backgroundRepeat: 'no-repeat',
     backgroundColor:
       theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
@@ -61,11 +62,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SignUp = () => {
+const SignUp = (props) => {
   const classes = useStyles();
 
   const [newUser, setNewUser] = useState({ email: "", password: "", name: "" });
-
+  const [error, setError] = useState("")
+  const history = useHistory();
+  
   const handleInputChanges = (event) => {
     const { name, value } = event.target;
 
@@ -78,10 +81,9 @@ const SignUp = () => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     console.log(newUser);
-    // props.signUpUser(newUser)
-    // .then((res)=>{
-    //   console.log(res)
-    // })
+    props.signUpUser(newUser)
+      .then(() => history.push('/home'))
+      .catch((error) => setError("Incorrect email or password"));
 
   }
 
@@ -147,7 +149,7 @@ const SignUp = () => {
               color="primary"
               className={classes.submit}
               onClick={handleFormSubmit}
-              // to={"/signin"} //redirect id not working need to fix
+            // to={"/signin"} //redirect id not working need to fix
             >
               Sign Up
             </Button>

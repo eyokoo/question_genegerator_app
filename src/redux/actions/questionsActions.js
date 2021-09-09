@@ -9,11 +9,26 @@ export const loadQuestions = () => {
       .catch((error) => console.log(error));
   };
 }
-
 export const loadQuestionsSuccess = (questions) => {
   return {
     type: ActionTypes.LOAD_QUESTIONS_SUCCESS,
     questions, //THIS IS BEING REFERENCED IN THE REDUCER
+  };
+}
+
+//LOAD QUESTION BY ID
+export const loadQuestionById = () => {
+  return function (dispatch) {
+    return qnApi
+      .getQuestionById()
+      .then((qnFromApi) => dispatch(loadQuestionByIdSuccess(qnFromApi)))
+      .catch((error) => console.log(error));
+  };
+}
+export const loadQuestionByIdSuccess = (questionId) => {
+  return {
+    type: ActionTypes.LOAD_QUESTION_BY_ID_SUCCESS,
+    questionId, //THIS IS BEING REFERENCED IN THE REDUCER
   };
 }
 
@@ -25,11 +40,26 @@ export const loadRandomQuestion = () => {
       .catch((error) => console.log(error));
   };
 }
-
 export const loadRandomQuestionSuccess = (question) => {
   return {
     type: ActionTypes.LOAD_RANDOM_QUESTION_SUCCESS,
     question,
+  };
+}
+
+export const loadRandomQuestionByC = () => {
+  return function (dispatch) {
+    return qnApi
+      .getRandomQuestionByC()
+      .then((qnFromApi) => dispatch(loadRandomQuestionByCSuccess(qnFromApi)))
+      .catch((error) => console.log(error));
+  };
+}
+
+export const loadRandomQuestionByCSuccess = (questionId) => {
+  return {
+    type: ActionTypes.LOAD_QUESTION_BY_ID_SUCCESS,
+    questionId, //THIS IS BEING REFERENCED IN THE REDUCER
   };
 }
 
@@ -41,7 +71,6 @@ export const postQuestion = (question) => {
       .catch((error) => console.log(error));
   };
 }
-
 export const postQuestionSuccess = (question) => {
   return {
     type: ActionTypes.POST_QUESTION,
@@ -57,7 +86,6 @@ export const updateQuestion = (question) => {
       .catch((error) => console.log(error));
   };
 }
-
 export const updateQuestionSuccess = (question) => {
   return {
     type: ActionTypes.UPDATE_QUESTION,
@@ -66,21 +94,23 @@ export const updateQuestionSuccess = (question) => {
 }
 
 export const deleteQuestion = (questionId) => {
+  console.log("***inside deleteQuestion")
   return function (dispatch) {
     //connect to the outside - API
     //start of the API call
     return qnApi
       .deleteQuestion(questionId)
       //end of the API call
-      .then(() => dispatch(deleteQuestionSuccess(questionId))) //dispatch an action which is the deleteRecipeSuccess function
-      .catch((error) => console.log(error));//when the API cal was not successful
+      .then(() => dispatch(deleteQuestionSuccess(questionId))) //dispatch an action which is the deleteQuestionSuccess function
+      .catch((error) => console.log("error in deleteQuestion function", error));//when the API cal was not successful
   }
-}
 
-//is in charge of telling the store that the previous event was successful
+}
 export const deleteQuestionSuccess = (questionId) => {
   return {
     type: ActionTypes.DELETE_QUESTION_SUCCESS,
     questionId: questionId,
   }
 }
+
+//is in charge of telling the store that the previous event was successful

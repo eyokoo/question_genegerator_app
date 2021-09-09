@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { useState } from "react";
+import { useHistory } from 'react-router-dom';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import IconButton from '@material-ui/core/IconButton';
@@ -18,8 +19,8 @@ const useStyles = makeStyles({
     margin: "auto",
     width: 650,
   },
-  icon: {
-    margin: "1ch"
+  tableCellIcon:{
+    minWidth: "120px",
   }
 });
 
@@ -42,14 +43,14 @@ const AllQuestions = (props) => {
       [name]: value,
     }));
   }
-
-  const handleUpdateQuestion = (event) => {
-    event.preventDefault(); //prevent from page to reload
-    props.updateQuestion(question).then(() => props.history.push("/all-questions"));
+  const history = useHistory();
+  const handleUpdateQuestion = (questionId) => {
+    props.updateQuestion(questionId).then(() => history.push(`/edit-question/${questionId}`));
   }
 
   //NEED TO MAKE THE DELETE ICON WORK
   const handleDeleteQuestion = (questionId) => {
+  console.log("***handleDeleteQuestion")
     props.deleteQuestion(questionId)
   }
 
@@ -65,16 +66,17 @@ const AllQuestions = (props) => {
         <TableBody>
           {props.questionsArray.map((question) => (
             <TableRow key={question.id}>
-              <TableCell>{question.question}</TableCell>
-              <TableCell>
-                <IconButton aria-label="delete" disabled color="primary">
-                  <DeleteIcon className={classes.icon} color="primary"
-                    onClick={() => handleDeleteQuestion(question.id)} //by adding another set of paramenters it will not automatically run the onclick event unless it is called
+              <TableCell> {question.question} </TableCell>
+              <TableCell className={classes.tableCellIcon}>
+                <IconButton aria-label="delete" color="primary" 
+                onClick={() => handleDeleteQuestion(question.id)}> 
+                 
+                  <DeleteIcon color="primary"
                   />
                 </IconButton>
-                <IconButton>
-                  <EditIcon className={classes.icon} color="primary"
-                    onClick={handleUpdateQuestion}
+                <IconButton onClick={() => handleUpdateQuestion(question.id)}>
+                  <EditIcon color="primary"
+                    
                   />
                 </IconButton>
               </TableCell>

@@ -12,6 +12,7 @@ import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+import { useState } from 'react';
 import Background from './img/signIn.jpeg'
 // import { PinDropSharp } from '@material-ui/icons';
 import { useHistory } from 'react-router-dom';
@@ -34,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
     height: '100vh',
   },
   image: {
-    backgroundImage:`url(${Background})`,
+    backgroundImage: `url(${Background})`,
     backgroundRepeat: 'no-repeat',
     backgroundColor:
       theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
@@ -60,24 +61,33 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SignIn = () => {
+const SignIn = (props) => {
   const classes = useStyles();
 
   // const [findUser, setFindUser] = useState({ email: "", password: ""});
-
+  const [user, setUser] = useState({ email: "", password: "" });
+  const [error, setError] = useState("")
   const history = useHistory();
-  const handleClick = (event) =>{
-    event.preventDefault();
-    history.push('/home'); //for now until i figure out how to check if user exits in db
-    // props.signInUser(user)
-    // .then((res) => {
-    //   if(){
-    //    //if user exists then user will be taken to the home page
-    //   }else{
-    //     //if this user doesn't exist show error message
-    //   }
-    // })
+  
+  function handleInputChanges(event) {
+    const { name, value } = event.target;
+
+    setUser((previoususer) => ({
+      ...previoususer,
+      [name]: value,
+    }));
   }
+  
+  const handleClick = (event) => {
+    event.preventDefault();
+    history.push('/home')
+  
+  //   props.signInUser(user)
+  //     .then(() => history.push('/home'))
+  //     .catch((error) => setError("Incorrect email or password"));
+
+  }
+
 
   return (
     <Grid container component="main" className={classes.root}>
@@ -88,6 +98,7 @@ const SignIn = () => {
           <Avatar className={classes.avatar}>
             <LockOutlinedIcon />
           </Avatar>
+          <div>{error}</div>
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
@@ -102,6 +113,7 @@ const SignIn = () => {
               name="email"
               autoComplete="email"
               autoFocus
+              onChange={handleInputChanges}
             />
             <TextField
               variant="outlined"
@@ -113,6 +125,7 @@ const SignIn = () => {
               type="password"
               id="password"
               autoComplete="current-password"
+              onChange={handleInputChanges}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}

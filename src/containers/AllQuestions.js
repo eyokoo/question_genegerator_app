@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import AllQuestions from "../components/AllQuestions";
-import { loadQuestions, deleteQuestion } from "../redux/actions/questionsActions";
+import { updateQuestion, loadQuestions, deleteQuestion } from "../redux/actions/questionsActions";
 
 
 const mapStateToProps = (state) => {
@@ -11,6 +11,7 @@ const mapStateToProps = (state) => {
 
 const dispatchStateToProps = {
   loadQuestions, 
+  updateQuestion,
   deleteQuestion, //function
 };
 
