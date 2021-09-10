@@ -1,8 +1,8 @@
 import { handleResponse, handleError, getHeaders } from "./apiUtils";
 
 
-// const url = "https://question-generator-app.herokuapp.com/questions"; //base url
-const url = "http://localhost:9000/questions"; //base url
+const url = "https://question-generator-app.herokuapp.com/questions"; //base url
+// const url = "http://localhost:9000/questions"; //base url
 
 export function getQuestions() {
   return fetch(url).then(handleResponse).catch(handleError);
