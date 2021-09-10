@@ -82,6 +82,7 @@ const SignUp = (props) => {
     event.preventDefault();
     console.log(newUser);
     props.signUpUser(newUser)
+      .then((props.setLogedIn(true)))
       .then(() => history.push('/home'))
       .catch((error) => setError("Incorrect email or password"));
 

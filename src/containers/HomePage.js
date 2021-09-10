@@ -8,6 +8,7 @@ const mapStateToProps = (state) => {
     randomQuestion: state.randomQuestion, 
     categoriesArray,
     questionsArray: state.questionsArray,
+    logedIn: state.logedIn,
   };
 }
 

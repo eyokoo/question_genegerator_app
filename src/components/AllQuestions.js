@@ -20,7 +20,7 @@ const useStyles = makeStyles({
     width: 650,
   },
   tableCellIcon:{
-    minWidth: "120px",
+    minWidth: "150px",
   }
 });
 
@@ -32,7 +32,7 @@ const AllQuestions = (props) => {
     if (props.questionsArray.length === 0) {
       props.loadQuestions(); //this function is like a black box to the dumb component
     }
-  }, []); //[] means on load of the page
+  }, [props.questionsArray]); //[] means on load of the page
 
   const [question, setQuestion] = useState(props.question);
   const handleInputChanges = (event) => {
@@ -52,6 +52,7 @@ const AllQuestions = (props) => {
   const handleDeleteQuestion = (questionId) => {
   console.log("***handleDeleteQuestion")
     props.deleteQuestion(questionId)
+    props.loadQuestions();
   }
 
   return (

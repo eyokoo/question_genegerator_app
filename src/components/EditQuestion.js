@@ -38,7 +38,7 @@ const EditQuestion = (props) => {
 
   const currentQuestion = props.questionsArray.find(question => question.id == questionId)
 
-  const [question, setQuestion] = useState({ question: currentQuestion.question, category_id: currentQuestion.category_id })
+  const [question, setQuestion] = useState({ id:currentQuestion.id, question: currentQuestion.question, category_id: currentQuestion.category_id })
 
   console.log(currentQuestion);
 
@@ -61,11 +61,9 @@ const EditQuestion = (props) => {
 
     console.log(question);
 
-    props.updateQuestion(questionId) //.updateQuestion is a black box function
-      .then(() => history.push("/all-questions")); //this is not working
-
-
-  }
+    props.updateQuestion(question) //.updateQuestion is a black box function
+      .then(() => history.push("/all-questions")) //this is not working
+    }
 
   return (
     <Paper className={classes.paper} >

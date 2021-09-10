@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const RandomQuestion = (props) => {
+console.log(props)
   const classes = useStyles();
   const [category, setCategory] = useState({ category_id: "" })
 
