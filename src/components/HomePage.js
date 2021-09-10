@@ -33,7 +33,7 @@ const RandomQuestion = (props) => {
 
   const handleClick = () => { //when handleClick is run it will generate a random question
     console.log("you clicked the button to call handleClick")
-    props.loadRandomQuestion()
+    props.loadRandomQuestion()  
     // if(!category){
     //   props.loadRandomQuestion()
     // }else{

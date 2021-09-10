@@ -4,7 +4,8 @@ import {
   storeTokenOnLocalStorage,
 } from "./apiUtils";
 
-const authUrl = `${process.env.REACT_APP_API_URL}/auth`;
+// const authUrl = `${process.env.REACT_APP_API_URL}/auth`;
+const authUrl = `https://question-generator-app.herokuapp.com/questions/auth`;
 
 export function signIn(user) {
   return fetch(`${authUrl}/signin`, {

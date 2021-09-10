@@ -32,7 +32,7 @@ export function postQuestion(question) { //fetching url and making a POST comman
 }
 
 export function updateQuestion(question) { //fetching url and making a POST command  
-  return fetch(url, {
+  return fetch(url,{
     method: "PUT", // PUT for update
     headers: getHeaders(),
     body: JSON.stringify(question),
@@ -41,8 +41,8 @@ export function updateQuestion(question) { //fetching url and making a POST comm
     .catch(handleError);
 }
 
-export function deleteQuestion(id) {
-  return fetch(url + "/" + id, { method: "DELETE" })
+export function deleteQuestion(question) {
+  return fetch(url, { method: "DELETE" })
     .then(handleResponse)
     .catch(handleError);
 }

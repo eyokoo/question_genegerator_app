@@ -36,9 +36,11 @@ const EditQuestion = (props) => {
   const { questionId } = useParams();
 
 
-  const [question, setQuestion] = useState({ question: "", category_id: "" })
+  const currentQuestion = props.questionsArray.find(question => question.id == questionId)
 
-  const currentQuestion = props.questionsArray.find(question => question.id === questionId)
+  const [question, setQuestion] = useState({ question: currentQuestion.question, category_id: currentQuestion.category_id })
+
+  console.log(currentQuestion);
 
   console.log(questionId)
   console.log(props.questionsArray)
@@ -59,7 +61,7 @@ const EditQuestion = (props) => {
 
     console.log(question);
 
-    props.updateQuestion(question) //.postQuestion is a black box function
+    props.updateQuestion(questionId) //.updateQuestion is a black box function
       .then(() => history.push("/all-questions")); //this is not working
 
 
@@ -71,47 +73,49 @@ const EditQuestion = (props) => {
         Edit Question
       </Typography>
 
+{/* if currentQuestion exists then render form */}
+      {currentQuestion && (
 
-
-      <form onSubmit={handleFormSubmit}>
-        <TextField
-          required
-          className={classes.textField}
-          fullWidth
-          name="question"
-          label="Edit question here" //is the label interfering with the value showing up?
-          variant="outlined"
-          value={question.question}
-          onChange={handleInputChanges}
-          />
-        <div>
+        <form onSubmit={handleFormSubmit}>
           <TextField
-            select
             required
-            name="category_id"
-            label="Category"
-            value={question.category_id}
+            className={classes.textField}
+            fullWidth
+            name="question"
+            label="Edit question here" //is the label interfering with the value showing up?
+            variant="outlined"
+            value={question.question}
             onChange={handleInputChanges}
-            helperText="Please select your category"
-          >
+          />
+          <div>
+            <TextField
+              select
+              required
+              name="category_id"
+              label="Category"
+              value={question.category_id}
+              onChange={handleInputChanges}
+              helperText="Please select your category"
+            >
 
-            {props.categoriesArray.map((category) => ( //whatever name i provide in my smart component/conatainer is what i should use here
-              <MenuItem key={category.id} value={category.id}>
-                {category.category}
-              </MenuItem>
-            ))}
-          </TextField>
-        </div>
-        <div>
-          <Button className={classes.button} variant="outlined" color="primary" type="submit">
-            SAVE
+              {props.categoriesArray.map((category) => ( //whatever name i provide in my smart component/conatainer is what i should use here
+                <MenuItem key={category.id} value={category.id}>
+                  {category.category}
+                </MenuItem>
+              ))}
+            </TextField>
+          </div>
+          <div>
+            <Button className={classes.button} variant="outlined" color="primary" type="submit">
+              SAVE
           </Button>
 
-          <Button variant="outlined" component={Link} to={"/all-questions"}> {/**redirecting. You can see this on App.js under the Switch Component*/}
+            <Button variant="outlined" component={Link} to={"/all-questions"}> {/**redirecting. You can see this on App.js under the Switch Component*/}
             CANCEL
           </Button>
-        </div>
-      </form>
+          </div>
+        </form>
+      )}
 
 
 
