@@ -41,8 +41,8 @@ export function updateQuestion(question) { //fetching url and making a POST comm
     .catch(handleError);
 }
 
-export function deleteQuestion(question) {
-  return fetch(url, { method: "DELETE" })
+export function deleteQuestion(questionId) {
+  return fetch(`${url}/${questionId}`, { method: "DELETE" })
     .then(handleResponse)
     .catch(handleError);
 }

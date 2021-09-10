@@ -82,9 +82,9 @@ const SignIn = (props) => {
     event.preventDefault();
     history.push('/home')
   
-  //   props.signInUser(user)
-  //     .then(() => history.push('/home'))
-  //     .catch((error) => setError("Incorrect email or password"));
+    props.signInUser(user)
+      .then(() => history.push('/home'))
+      .catch((error) => setError("Incorrect email or password"));
 
   }
 

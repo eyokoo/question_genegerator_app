@@ -29,7 +29,7 @@ const useStyles = makeStyles({
   },
 });
 
-//addQuestion is a function in actions/questionActions which runs the POST API command and returns if postQuestionSuccess was a success or caused an error. This line of code is saying, run the POST API command to add the new questions and once thats done then push it into history stack in "/questions"
+
 const EditQuestion = (props) => {
   const classes = useStyles();
   let history = useHistory(); //defined to push a new entry onto the history stack
